@@ -36,6 +36,7 @@ import static com.brambolt.gradle.PluginBuildPlugin.configurePlugins
 import static com.brambolt.gradle.PluginBuildPlugin.configureJavaPublishing
 import static com.brambolt.gradle.PluginBuildPlugin.configureRepositories
 import static com.brambolt.gradle.PluginBuildPlugin.configureSourceJarTask
+import static com.brambolt.gradle.PluginBuildPlugin.logProperties
 
 /**
  * Configures a Gradle build to build and publish a library.
@@ -97,22 +98,5 @@ class LibraryBuildPlugin implements Plugin<Project> {
     configureArtifactory(project)
     configureBintray(project)
     configureDefaultTasks(project)
-  }
-
-  /**
-   * Logs the required and derived project properties.
-   * @param project The project to configure
-   */
-  void logProperties(Project project) {
-    project.logger.info("""
-  Artifact id:          ${project.artifactId}
-  Branch:               ${project.vcsBranch}
-  Commit:               ${project.vcsCommit}
-  Description:          ${project.description}
-  Group:                ${project.group}
-  Name:                 ${project.name}
-  VCS URL:              ${project.vcsUrl}
-  Version:              ${project.version}
-""")
   }
 }
